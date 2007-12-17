@@ -17,7 +17,6 @@ BuildRequires:	gawk
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
 BuildRequires:	automake1.7
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable
