@@ -81,6 +81,7 @@ rm -f configure
 libtoolize --force --copy; aclocal-1.7; automake-1.7 --add-missing --copy --foreign; autoconf
 
 export CFLAGS="%{optflags} -Wall -fPIC -D_REENTRANT"
+export LIBS="-lm"
 
 %configure2_5x
 
