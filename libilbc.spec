@@ -1,14 +1,15 @@
 %define	major 0
-%define libname	%mklibname ilbc %{major}
+%define libname %mklibname ilbc %{major}
+%define develname %mklibname ilbc -d
 
 Summary:	Internet Low Bitrate Codec (iLBC) library
 Name:		libilbc
 Version:	0.6
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	Freeware
 Group:		System/Libraries
 URL:		http://www.ilbcfreeware.org/
-Source0:	http://simon.morlat.free.fr/download/stable/source/ilbc-rfc3951.tar.bz2
+Source0:	ilbc-rfc3951.tar.bz2
 Source1:	http://www.ietf.org/rfc/rfc3951.txt.bz2
 Source2:	http://www.ilbcfreeware.org/documentation/extract-cfile.awk.bz2
 Source3:	http://www.ilbcfreeware.org/documentation/gips_iLBClicense.pdf.bz2
@@ -17,45 +18,43 @@ BuildRequires:	gawk
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
 BuildRequires:	automake1.7
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable
-for robust voice communication over IP. The codec is designed for
-narrow band speech and results in a payload bit rate of 13.33
-kbit/s with an encoding frame length of 30 ms and 15.20 kbps with
-an encoding length of 20 ms. The iLBC codec enables graceful
-speech quality degradation in the case of lost frames, which
-occurs in connection with lost or delayed IP packets.
+iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for robust
+voice communication over IP. The codec is designed for narrow band speech and
+results in a payload bit rate of 13.33 kbit/s with an encoding frame length of
+30 ms and 15.20 kbps with an encoding length of 20 ms. The iLBC codec enables
+graceful speech quality degradation in the case of lost frames, which occurs in
+connection with lost or delayed IP packets.
 
 %package -n	%{libname}
 Summary:	Internet Low Bitrate Codec (iLBC) library
 Group:          System/Libraries
 
 %description -n	%{libname}
-iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable
-for robust voice communication over IP. The codec is designed for
-narrow band speech and results in a payload bit rate of 13.33
-kbit/s with an encoding frame length of 30 ms and 15.20 kbps with
-an encoding length of 20 ms. The iLBC codec enables graceful
-speech quality degradation in the case of lost frames, which
-occurs in connection with lost or delayed IP packets.
+iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for robust
+voice communication over IP. The codec is designed for narrow band speech and
+results in a payload bit rate of 13.33 kbit/s with an encoding frame length of
+30 ms and 15.20 kbps with an encoding length of 20 ms. The iLBC codec enables
+graceful speech quality degradation in the case of lost frames, which occurs in
+connection with lost or delayed IP packets.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Static library and header files for the iLBC library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}
-Provides:	lib%{name}-devel = %{version}
+Provides:	%{name}-devel = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
+Obsoletes:	%{mklibname ilbc -d 0}
 
-%description -n	%{libname}-devel
-iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable
-for robust voice communication over IP. The codec is designed for
-narrow band speech and results in a payload bit rate of 13.33
-kbit/s with an encoding frame length of 30 ms and 15.20 kbps with
-an encoding length of 20 ms. The iLBC codec enables graceful
-speech quality degradation in the case of lost frames, which
-occurs in connection with lost or delayed IP packets.
+%description -n	%{develname}
+iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for robust
+voice communication over IP. The codec is designed for narrow band speech and
+results in a payload bit rate of 13.33 kbit/s with an encoding frame length of
+30 ms and 15.20 kbps with an encoding length of 20 ms. The iLBC codec enables
+graceful speech quality degradation in the case of lost frames, which occurs in
+connection with lost or delayed IP packets.
 
 This package contains the static library and header files.
 
@@ -88,7 +87,7 @@ export CFLAGS="%{optflags} -Wall -fPIC -D_REENTRANT"
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
@@ -97,19 +96,18 @@ export CFLAGS="%{optflags} -Wall -fPIC -D_REENTRANT"
 %postun -n %{libname} -p /sbin/ldconfig
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
 %doc gips_iLBClicense.pdf README
 %{_libdir}/*.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc src/rfc3951.txt src/extract-cfile.awk
-%{_includedir}/ilbc
+%dir %{_includedir}/ilbc
+%{_includedir}/ilbc/*
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/*.la
-
-
