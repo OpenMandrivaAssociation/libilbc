@@ -5,7 +5,7 @@
 Summary:	Internet Low Bitrate Codec (iLBC) library
 Name:		libilbc
 Version:	0.6
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	Freeware
 Group:		System/Libraries
 URL:		http://www.ilbcfreeware.org/
