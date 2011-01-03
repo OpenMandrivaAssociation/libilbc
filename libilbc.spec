@@ -5,7 +5,7 @@
 Summary:	Internet Low Bitrate Codec (iLBC) library
 Name:		libilbc
 Version:	0.6
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	Freeware
 Group:		System/Libraries
 URL:		http://www.ilbcfreeware.org/
@@ -17,7 +17,7 @@ Patch0:		libilbc-0.6-version.diff
 BuildRequires:	gawk
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -78,7 +78,7 @@ bzcat %{SOURCE3} > gips_iLBClicense.pdf
 %build
 export WANT_AUTOCONF_2_5=1
 rm -f configure
-libtoolize --force --copy; aclocal-1.7; automake-1.7 --add-missing --copy --foreign; autoconf
+libtoolize --force --copy; aclocal; automake --add-missing --copy --foreign; autoconf
 
 export CFLAGS="%{optflags} -Wall -fPIC -D_REENTRANT"
 export LIBS="-lm"
