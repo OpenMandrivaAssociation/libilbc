@@ -1,0 +1,11 @@
+--- configure.ac	2005-05-11 16:19:58.000000000 +0200
++++ configure.ac.oden	2006-02-13 20:21:29.000000000 +0100
+@@ -3,7 +3,7 @@
+ 
+ 
+ AC_PREREQ(2.59)
+-AC_INIT(ilbc,rfc3951)
++AC_INIT(ilbc,0.6)
+ AC_CONFIG_SRCDIR([src/anaFilter.c])
+ 
+ AM_INIT_AUTOMAKE($PACKAGE_NAME,$PACKAGE_VERSION,no-define)
