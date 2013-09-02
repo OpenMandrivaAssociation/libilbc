@@ -1,5 +1,6 @@
 sources:
-  "extract-cfile.awk.bz2": 2c35e0a7f50a261cf5f6c9e1b27d071c18877cd5
-  "gips_iLBClicense.pdf.bz2": e4e2a0264733eefbc3155f39a9f61637e5963d22
-  "ilbc-rfc3951.tar.bz2": 7da49db8aedc57e7eeb79f0c4e9228c148901684
-  "rfc3951.txt.bz2": 9669a58bb0564a9c2b2b054066c19e84bab6c71f
+  extract-cfile.awk.bz2: 2c35e0a7f50a261cf5f6c9e1b27d071c18877cd5
+  gips_iLBClicense.pdf.bz2: e4e2a0264733eefbc3155f39a9f61637e5963d22
+  ilbc-rfc3951.tar.bz2: 7da49db8aedc57e7eeb79f0c4e9228c148901684
+  libilbc-master.zip: 8f24a4715e5a9d30539e75c60993f8768765cfab
+  rfc3951.txt.bz2: 9669a58bb0564a9c2b2b054066c19e84bab6c71f
