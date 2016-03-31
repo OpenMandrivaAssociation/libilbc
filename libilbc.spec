@@ -1,16 +1,17 @@
-%define	major 0
+%define	major 2
 %define libname %mklibname ilbc %{major}
 %define libnamedev %mklibname ilbc -d
 
 Summary:	Internet Low Bitrate Codec (iLBC) library
 Name:		libilbc
-Version:	1.1.1
-Release:	12
+Version:	2.0.2
+Release:	1
 License:	BSD-style
 Group:		System/Libraries
 URL:		https://github.com/dekkers/libilbc
-Source0:	libilbc-master.zip
-BuildRequires:	autoconf automake libtool
+Source0:	https://github.com/TimothyGu/libilbc/archive/v%{version}.tar.gz
+BuildRequires:	cmake
+BuildRequires:	ninja
 
 %description
 iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for robust
@@ -49,21 +50,19 @@ connection with lost or delayed IP packets.
 
 %prep
 
-%setup -q -n libilbc-master
+%setup -q
 
 %build
-autoreconf -fi
-%configure2_5x \
-    --disable-static
-%make
+%cmake -G Ninja
+%ninja
 
 %install
-%makeinstall_std
+%ninja_install -C build
 
 rm -f %{buildroot}%{_libdir}/*.*a
 
 %files -n %{libname}
-%doc COPYING README
+%doc COPYING
 %{_libdir}/libilbc.so.%{major}*
 
 %files -n %{libnamedev}
