@@ -5,7 +5,7 @@
 Summary:	Internet Low Bitrate Codec (iLBC) library
 Name:		libilbc
 Version:	2.0.2
-Release:	1
+Release:	2
 License:	BSD-style
 Group:		System/Libraries
 URL:		https://github.com/dekkers/libilbc
