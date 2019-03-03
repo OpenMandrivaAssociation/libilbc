@@ -51,6 +51,10 @@ connection with lost or delayed IP packets.
 %prep
 
 %setup -q
+%if "%{_lib}" != "lib64"
+# Let's not overreach ;)
+sed -i -e 's,lib64,%{_lib},g' CMakeLists.txt
+%endif
 
 %build
 %cmake -G Ninja
