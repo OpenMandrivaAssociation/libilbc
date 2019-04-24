@@ -10,6 +10,7 @@ License:	BSD-style
 Group:		System/Libraries
 URL:		https://github.com/dekkers/libilbc
 Source0:	https://github.com/TimothyGu/libilbc/archive/v%{version}.tar.gz
+Patch0:		libilbc-2.0.2-ppc_ppc64_sparc_riscv.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 

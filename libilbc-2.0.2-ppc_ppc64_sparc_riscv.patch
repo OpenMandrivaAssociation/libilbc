@@ -1,0 +1,35 @@
+diff --git a/typedefs.h b/typedefs.h
+index 6694516..f0d5b27 100644
+--- a/typedefs.h
++++ b/typedefs.h
+@@ -26,6 +26,9 @@
+ #elif defined(__aarch64__)
+ #define WEBRTC_ARCH_64_BITS
+ #define WEBRTC_ARCH_LITTLE_ENDIAN
++#elif defined(__riscv64__) || (defined(__riscv) && __riscv_xlen == 64)
++#define WEBRTC_ARCH_64_BITS
++#define WEBRTC_ARCH_LITTLE_ENDIAN
+ #elif defined(_M_IX86) || defined(__i386__)
+ #define WEBRTC_ARCH_X86_FAMILY
+ #define WEBRTC_ARCH_X86
+@@ -47,6 +50,20 @@
+ #elif defined(__pnacl__)
+ #define WEBRTC_ARCH_32_BITS
+ #define WEBRTC_ARCH_LITTLE_ENDIAN
++#elif defined(__PPC__)
++#define WEBRTC_ARCH_BIG_ENDIAN
++#if defined(__PPC64__)
++#define WEBRTC_ARCH_64_BITS
++#else
++#define WEBRTC_ARCH_32_BITS
++#endif
++#elif defined(__sparc__)
++#define WEBRTC_ARCH_BIG_ENDIAN
++#if __SIZEOF_LONG__ == 8
++#define WEBRTC_ARCH_64_BITS
++#else
++#define WEBRTC_ARCH_32_BITS
++#endif
+ #else
+ #error Please add support for your architecture in typedefs.h
+ #endif
