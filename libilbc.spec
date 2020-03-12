@@ -59,7 +59,7 @@ sed -i -e 's,lib64,%{_lib},g' CMakeLists.txt
 
 %build
 %cmake -G Ninja
-%ninja
+%ninja_build
 
 %install
 %ninja_install -C build
